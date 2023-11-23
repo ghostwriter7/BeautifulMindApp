@@ -1,10 +1,35 @@
 <div class="calendar">
+  <mat-toolbar class="calendar__toolbar" color="primary">
+    <mat-toolbar-row>
+      <span class="calendar__label">{{ label }}</span>
+      <div class="calendar__actions">
+        <mat-form-field>
+          <mat-label>Year</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Month</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-mini-fab>
+          <mat-icon>arrow_left</mat-icon>
+        </button>
+        <button mat-mini-fab>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
   <div class="calendar__header">
     <mat-card *ngFor="let dayOfWeek of daysOfWeek" class="calendar__header-item">
       <mat-card-content>{{ dayOfWeek }}</mat-card-content>
     </mat-card>
   </div>
-  <mat-divider class="calendar__divider" />
+  <mat-divider class="calendar__divider"/>
   <mat-card *ngFor="let day of days" class="calendar__day" [class]="day.positionClass">
     <mat-card-content>
       <button class="calendar__day-btn" mat-mini-fab color="primary">{{ day.dayOfMonth }}</button>

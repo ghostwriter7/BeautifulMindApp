@@ -13,8 +13,14 @@
     flex: 1;
   }
 
-  &__divider, &__header {
+  &__divider, &__header, &__toolbar {
     grid-column: 1 / 8;
+  }
+
+  &__label {
+    letter-spacing: 12px;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   &__day {
@@ -30,6 +36,11 @@
   &__day-btn {
     display: block;
     margin-left: auto;
+  }
+
+  &__toolbar mat-toolbar-row {
+    display: flex;
+    justify-content: space-between;
   }
 
   @for $i from 1 through 7 {
