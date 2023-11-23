@@ -1,3 +1,5 @@
-<div class="menu-item" [routerLink]="['/', menuItem.route]">
-  <div class="menu-item__label">{{ menuItem.label }}</div>
-</div>
+<mat-card [routerLink]="['/', menuItem.route]">
+  <mat-card-header>
+    <mat-card-title>{{ menuItem.label }}</mat-card-title>
+  </mat-card-header>
+</mat-card>
