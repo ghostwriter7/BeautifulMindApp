@@ -1,5 +1,13 @@
-<mat-card *ngFor="let day of days" [class]="day.positionClass">
-  <mat-card-content>
-    {{ day.date }}
-  </mat-card-content>
-</mat-card>
+<div class="calendar">
+  <div class="calendar__header">
+    <mat-card *ngFor="let dayOfWeek of daysOfWeek" class="calendar__header-item">
+      <mat-card-content>{{ dayOfWeek }}</mat-card-content>
+    </mat-card>
+  </div>
+  <mat-divider class="calendar__divider" />
+  <mat-card *ngFor="let day of days" [class]="day.positionClass">
+    <mat-card-content>
+      {{ day.date }}
+    </mat-card-content>
+  </mat-card>
+</div>
