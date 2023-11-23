@@ -1,1 +1,5 @@
-<p>calendar works!</p>
+<mat-card *ngFor="let day of days" [class]="day.positionClass">
+  <mat-card-content>
+    {{ day.date }}
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,10 @@
+:host {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+
+  @for $i from 1 through 7 {
+    .day-#{$i} {
+      grid-column: $i;
+    }
+  }
+}
