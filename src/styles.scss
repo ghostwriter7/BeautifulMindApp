@@ -37,3 +37,19 @@ $BeautifulMindApp-theme: mat.define-dark-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  @for $i from 100 through 700 {
+    --primary-#{$i}: #{map-get($BeautifulMindApp-primary, $i)};
+    --accent-#{$i}: #{map-get($BeautifulMindApp-accent, $i)};
+    --warn-#{$i}: #{map-get($BeautifulMindApp-warn, $i)};
+  }
+}
+
+.mat-primary-bg {
+  background-color: var(--primary);
+}
+
+.mat-accent-bg {
+  background-color: var(--accent);
+}

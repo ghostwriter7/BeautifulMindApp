@@ -9,11 +9,27 @@
   }
 
   &__header-item {
+    background-color: var(--accent-100);
     flex: 1;
   }
 
   &__divider, &__header {
     grid-column: 1 / 8;
+  }
+
+  &__day {
+    &:hover {
+      cursor: pointer;
+
+      & button {
+        background-color: var(--warn-300);
+      }
+    }
+  }
+
+  &__day-btn {
+    display: block;
+    margin-left: auto;
   }
 
   @for $i from 1 through 7 {
