@@ -9,18 +9,12 @@
   }
 
   &__header-item {
-    background-color: var(--accent-100);
+    background-color: var(--accent-400);
     flex: 1;
   }
 
   &__divider, &__header, &__toolbar {
     grid-column: 1 / 8;
-  }
-
-  &__label {
-    letter-spacing: 12px;
-    text-align: center;
-    text-transform: uppercase;
   }
 
   &__day {

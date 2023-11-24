@@ -2,9 +2,32 @@
   display: flex;
   grid-column: 1 / 8;
   justify-content: space-between;
+
+  &::ng-deep {
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none;
+    }
+  }
 }
 
-mat-toolbar-row {
-  display: flex;
-  justify-content: space-between;
+
+
+.calendar-toolbar {
+
+  & mat-toolbar-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__actions {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+  }
+
+  &__label {
+    letter-spacing: 12px;
+    text-align: center;
+    text-transform: uppercase;
+  }
 }
