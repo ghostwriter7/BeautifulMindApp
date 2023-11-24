@@ -6,7 +6,7 @@
     </mat-card>
   </div>
   <mat-divider class="calendar__divider"/>
-  <mat-card *ngFor="let day of days" class="calendar__day" [class]="day.positionClass">
+  <mat-card *ngFor="let day of grid()" class="calendar__day" [class]="day.positionClass">
     <mat-card-content>
       <button class="calendar__day-btn" mat-mini-fab color="primary">{{ day.dayOfMonth }}</button>
     </mat-card-content>
