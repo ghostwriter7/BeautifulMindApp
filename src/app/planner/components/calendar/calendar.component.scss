@@ -38,11 +38,6 @@
     margin-left: auto;
   }
 
-  &__toolbar mat-toolbar-row {
-    display: flex;
-    justify-content: space-between;
-  }
-
   @for $i from 1 through 7 {
     .calendar__day-#{$i} {
       grid-column: $i;
