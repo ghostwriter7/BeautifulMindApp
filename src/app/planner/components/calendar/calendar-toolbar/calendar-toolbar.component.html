@@ -2,6 +2,7 @@
   <mat-toolbar-row>
     <span class="calendar__label">{{ label() }}</span>
     <div class="calendar__actions">
+      <button mat-raised-button color="accent" (click)="calendarService.setToday()">Today</button>
       <mat-form-field>
         <mat-label>Year</mat-label>
         <mat-select [value]="calendarService.year()" (selectionChange)="calendarService.setYear($event.value)">

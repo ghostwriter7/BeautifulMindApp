@@ -61,6 +61,12 @@ export class CalendarService {
     this.month.set(monthIndex);
   }
 
+  setToday(): void {
+    const now = new Date();
+    this.year.set(now.getFullYear());
+    this.month.set(now.getMonth());
+  }
+
   setYear(year: number): void {
     this.year.set(year);
   }
