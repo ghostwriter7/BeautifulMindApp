@@ -18,7 +18,7 @@ import { CalendarService } from "@planner/services/calendar.service";
   styleUrl: './calendar.component.scss'
 })
 export class CalendarComponent {
-  grid = this.calendarService.getCalendarGrid();
+  readonly grid = this.calendarService.grid;
   readonly daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   constructor(private calendarService: CalendarService) {
