@@ -1,4 +1,7 @@
 <mat-card >
+  <mat-card-header class="menu-item__icon-container">
+    <mat-icon>{{ menuItem.icon }}</mat-icon>
+  </mat-card-header>
   <mat-card-content>
     <button mat-raised-button color="primary" [routerLink]="['/', menuItem.route]">Planner</button>
   </mat-card-content>

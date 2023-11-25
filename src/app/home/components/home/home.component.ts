@@ -12,6 +12,6 @@ import { MenuItem } from "@home/interfaces";
 })
 export class HomeComponent {
   menuItems: MenuItem[] = [
-    { description: 'Manage your Calendar, Events, Tasks and Goals', label: 'Planner', route: 'planner' }
+    { description: 'Manage your Calendar, Events, Tasks and Goals', icon: 'calendar_today', label: 'Planner', route: 'planner' }
   ];
 }
