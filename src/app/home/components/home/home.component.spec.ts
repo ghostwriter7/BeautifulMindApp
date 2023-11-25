@@ -1,6 +1,5 @@
 import { HomeComponent } from './home.component';
-import { Spectator } from "@ngneat/spectator/jest";
-import { createComponentFactory } from "@ngneat/spectator/jest";
+import { Spectator, createComponentFactory } from "@ngneat/spectator/jest";
 import { MenuItemComponent } from "@home/components/menu-item/menu-item.component";
 import { RouterTestingModule } from "@angular/router/testing";
 

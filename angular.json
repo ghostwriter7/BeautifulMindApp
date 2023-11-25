@@ -6,6 +6,9 @@
     "BeautifulMindApp": {
       "projectType": "application",
       "schematics": {
+        "@ngneat/spectator:spectator-component": {
+          "jest": true
+        },
         "@schematics/angular:component": {
           "style": "scss"
         }
