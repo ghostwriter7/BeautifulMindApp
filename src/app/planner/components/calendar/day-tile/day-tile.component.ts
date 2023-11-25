@@ -1,8 +1,10 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, HostListener, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { CalendarDay } from "@planner/services/calendar.service";
+import { EventDialogComponent } from "@planner/components/calendar/event-dialog/event-dialog.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-day-tile',
@@ -16,4 +18,11 @@ export class DayTileComponent {
     return ['day-tile', this.day?.positionClass];
   }
   @Input() day: CalendarDay;
+
+  constructor(private dialog: MatDialog) {
+  }
+
+  @HostListener('click') onClick() {
+    this.dialog.open(EventDialogComponent, { width: '800px' });
+  }
 }

@@ -1,0 +1,14 @@
+.event-form {
+  display: flex;
+  flex-direction: column;
+
+  &__field {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+
+    & mat-form-field {
+      flex: 1;
+    }
+  }
+}
