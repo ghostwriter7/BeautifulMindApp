@@ -1,23 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EventFormComponent } from './event-form.component';
+import { createComponentFactory, Spectator } from "@ngneat/spectator/jest";
 
 describe('EventFormComponent', () => {
-  let component: EventFormComponent;
-  let fixture: ComponentFixture<EventFormComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [EventFormComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(EventFormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: Spectator<EventFormComponent>;
+  const createComponent = createComponentFactory({
+    component: EventFormComponent
   });
 
+  beforeEach(() => {
+    spectator = createComponent();
+  })
+
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

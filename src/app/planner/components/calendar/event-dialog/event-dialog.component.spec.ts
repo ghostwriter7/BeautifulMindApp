@@ -1,23 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EventDialogComponent } from './event-dialog.component';
+import { createComponentFactory, Spectator } from "@ngneat/spectator/jest";
+import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 
 describe('EventDialogComponent', () => {
-  let component: EventDialogComponent;
-  let fixture: ComponentFixture<EventDialogComponent>;
+  let spectator: Spectator<EventDialogComponent>;
+  const createComponent = createComponentFactory({
+    component: EventDialogComponent,
+    providers: [{ provide: MatDialogRef, useValue: {} }],
+    imports: [MatDialogModule]
+  });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [EventDialogComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(EventDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    spectator = createComponent();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });
