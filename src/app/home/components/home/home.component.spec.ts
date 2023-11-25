@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HomeComponent } from './home.component';
+import { Spectator } from "@ngneat/spectator";
+import { createComponentFactory } from "@ngneat/spectator/jest";
+import { MenuItemComponent } from "@home/components/menu-item/menu-item.component";
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let spectator: Spectator<HomeComponent>;
+  const createComponent = createComponentFactory({
+    component: HomeComponent,
+    componentMocks: [MenuItemComponent],
+    imports: [RouterTestingModule]
+  });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [HomeComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach( () => {
+   spectator = createComponent();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });
