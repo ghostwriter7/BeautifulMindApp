@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MenuItemComponent } from './menu-item.component';
+import { createComponentFactory, Spectator } from "@ngneat/spectator/jest";
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe('MenuItemComponent', () => {
-  let component: MenuItemComponent;
-  let fixture: ComponentFixture<MenuItemComponent>;
+  let spectator: Spectator<MenuItemComponent>;
+  const createComponent = createComponentFactory({
+    component: MenuItemComponent,
+    imports: [RouterTestingModule]
+  });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MenuItemComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(MenuItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    spectator = createComponent({
+      props: {
+        menuItem: { icon: 'ANY_ICON', label: 'ANY_LABEL', route: 'ANY_ROUTE'}
+      }
+    });
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

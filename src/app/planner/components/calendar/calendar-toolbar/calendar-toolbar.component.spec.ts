@@ -1,23 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CalendarToolbarComponent } from './calendar-toolbar.component';
+import { createComponentFactory, Spectator } from "@ngneat/spectator/jest";
 
 describe('CalendarToolbarComponent', () => {
-  let component: CalendarToolbarComponent;
-  let fixture: ComponentFixture<CalendarToolbarComponent>;
+  let spectator: Spectator<CalendarToolbarComponent>;
+  const createComponent = createComponentFactory({
+    component: CalendarToolbarComponent
+  });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CalendarToolbarComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(CalendarToolbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    spectator = createComponent();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

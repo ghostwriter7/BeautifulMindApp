@@ -1,23 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PlannerComponent } from './planner.component';
+import { createComponentFactory, Spectator } from "@ngneat/spectator/jest";
 
 describe('PlannerComponent', () => {
-  let component: PlannerComponent;
-  let fixture: ComponentFixture<PlannerComponent>;
+  let spectator: Spectator<PlannerComponent>;
+  const createComponent = createComponentFactory({
+    component: PlannerComponent
+  });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [PlannerComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(PlannerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    spectator = createComponent();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

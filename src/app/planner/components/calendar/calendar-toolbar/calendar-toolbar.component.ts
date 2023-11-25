@@ -4,13 +4,12 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSelectModule } from "@angular/material/select";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
-import { ReactiveFormsModule } from "@angular/forms";
 import { CalendarService } from "@planner/services/calendar.service";
 
 @Component({
   selector: 'app-calendar-toolbar',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatSelectModule, MatIconModule, MatButtonModule, ReactiveFormsModule],
+  imports: [CommonModule, MatToolbarModule, MatSelectModule, MatIconModule, MatButtonModule],
   templateUrl: './calendar-toolbar.component.html',
   styleUrl: './calendar-toolbar.component.scss'
 })

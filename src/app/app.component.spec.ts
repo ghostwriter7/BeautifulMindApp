@@ -1,16 +1,18 @@
-import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Spectator } from "@ngneat/spectator/jest";
+import { createComponentFactory } from "@ngneat/spectator/jest";
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
+  let spectator: Spectator<AppComponent>;
+  const createComponent = createComponentFactory({
+    component: AppComponent
+  });
+
+  beforeEach(() => {
+    spectator = createComponent();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

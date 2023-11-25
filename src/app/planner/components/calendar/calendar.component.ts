@@ -6,7 +6,6 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSelectModule } from "@angular/material/select";
 import { MatIconModule } from "@angular/material/icon";
-import { ReactiveFormsModule } from "@angular/forms";
 import { CalendarToolbarComponent } from "@planner/components/calendar/calendar-toolbar/calendar-toolbar.component";
 import { CalendarService } from "@planner/services/calendar.service";
 import { DayTileComponent } from "@planner/components/calendar/day-tile/day-tile.component";
@@ -14,7 +13,7 @@ import { DayTileComponent } from "@planner/components/calendar/day-tile/day-tile
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatDividerModule, MatButtonModule, MatToolbarModule, MatSelectModule, MatIconModule, ReactiveFormsModule, CalendarToolbarComponent, DayTileComponent],
+  imports: [CommonModule, MatCardModule, MatDividerModule, MatButtonModule, MatToolbarModule, MatSelectModule, MatIconModule, CalendarToolbarComponent, DayTileComponent],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss'
 })

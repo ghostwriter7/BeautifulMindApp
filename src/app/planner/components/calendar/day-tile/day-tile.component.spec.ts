@@ -1,23 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DayTileComponent } from './day-tile.component';
+import { createComponentFactory, Spectator } from "@ngneat/spectator/jest";
 
 describe('DayTileComponent', () => {
-  let component: DayTileComponent;
-  let fixture: ComponentFixture<DayTileComponent>;
+  let spectator: Spectator<DayTileComponent>;
+  const createComponent = createComponentFactory({
+    component: DayTileComponent
+  });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [DayTileComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(DayTileComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    spectator = createComponent({
+      props: { day: { dayOfMonth: 1, date: new Date(), positionClass: 'ANY_CLASS' } }
+    });
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });
