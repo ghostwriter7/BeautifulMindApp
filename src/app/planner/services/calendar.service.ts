@@ -1,6 +1,7 @@
 import { computed, Injectable, signal } from "@angular/core";
 
-type CalendarGrid = { dayOfMonth: number, date: Date, positionClass: string }[];
+type CalendarGrid = CalendarDay[];
+export type CalendarDay = { dayOfMonth: number, date: Date, positionClass: string };
 
 @Injectable({ providedIn: 'root' })
 export class CalendarService {

@@ -17,21 +17,6 @@
     grid-column: 1 / 8;
   }
 
-  &__day {
-    &:hover {
-      cursor: pointer;
-
-      & button {
-        background-color: var(--warn-300);
-      }
-    }
-  }
-
-  &__day-btn {
-    display: block;
-    margin-left: auto;
-  }
-
   @for $i from 1 through 7 {
     .calendar__day-#{$i} {
       grid-column: $i;
