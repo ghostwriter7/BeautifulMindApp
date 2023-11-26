@@ -1,4 +1,5 @@
-import { computed, Injectable, signal } from "@angular/core";
+import { computed, Inject, Injectable, signal } from "@angular/core";
+import { CALENDAR_NOW_TOKEN } from "@planner/tokens";
 
 type CalendarGrid = CalendarDay[];
 export type CalendarDay = { dayOfMonth: number, date: Date, positionClass: string };
@@ -33,8 +34,12 @@ export class CalendarService {
     const month = this.month();
     return `${new Date(year, month, 1).toLocaleString('default', { month: 'long', year: 'numeric' })}`;
   })
-  month = signal<number>(new Date().getMonth());
-  year = signal<number>(new Date().getFullYear());
+  month = signal<number>(this.now.getMonth());
+  year = signal<number>(this.now.getFullYear());
+
+  constructor(
+    @Inject(CALENDAR_NOW_TOKEN) private now: Date) {
+  }
 
   goToNextMonth(): void {
     const currentMonth = this.month();
@@ -63,9 +68,8 @@ export class CalendarService {
   }
 
   setToday(): void {
-    const now = new Date();
-    this.year.set(now.getFullYear());
-    this.month.set(now.getMonth());
+    this.year.set(this.now.getFullYear());
+    this.month.set(this.now.getMonth());
   }
 
   setYear(year: number): void {
