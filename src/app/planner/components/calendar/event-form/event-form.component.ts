@@ -4,6 +4,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { DateAfterValidator } from "@core/validators";
 
 @Component({
   selector: 'app-event-form',
@@ -34,6 +35,6 @@ export class EventFormComponent implements OnInit {
       startDateTime: new FormControl<string>(null, Validators.required),
       endDateTime: new FormControl<string>(null, Validators.required),
       location: new FormControl<string>(null)
-    });
+    }, [DateAfterValidator('endDateTime', 'startDateTime')]);
   }
 }

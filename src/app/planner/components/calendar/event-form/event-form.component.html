@@ -29,6 +29,9 @@
     <mat-form-field>
       <mat-label>Ending</mat-label>
       <input formControlName="endDateTime" matInput type="datetime-local">
+      @if (form.controls.endDateTime.errors?.['dateAfter']) {
+      <mat-error>The ending date cannot happen earlier than the beginning</mat-error>
+      }
     </mat-form-field>
   </div>
   <div class="event-form__field">

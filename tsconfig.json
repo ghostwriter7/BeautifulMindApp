@@ -23,8 +23,15 @@
       "dom"
     ],
     "paths": {
-      "@home/*": ["./src/app/home/*"],
-      "@planner/*": ["./src/app/planner/*"]
+      "@core/*": [
+        "./src/app/core/*"
+      ],
+      "@home/*": [
+        "./src/app/home/*"
+      ],
+      "@planner/*": [
+        "./src/app/planner/*"
+      ]
     }
   },
   "angularCompilerOptions": {
