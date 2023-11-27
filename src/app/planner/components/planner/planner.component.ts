@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarComponent } from "@planner/components/calendar/calendar.component";
 
@@ -7,7 +7,8 @@ import { CalendarComponent } from "@planner/components/calendar/calendar.compone
   standalone: true,
   imports: [CommonModule, CalendarComponent],
   templateUrl: './planner.component.html',
-  styleUrl: './planner.component.scss'
+  styleUrl: './planner.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlannerComponent {
 

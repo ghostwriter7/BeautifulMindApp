@@ -4,6 +4,8 @@ import { Event } from "@planner/interfaces";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 
+export type SaveEventPayload = Omit<Partial<Event>, 'id'>;
+
 @Injectable({ providedIn: 'root' })
 export class EventService {
   private readonly apiUrl = environment.apiUrl;
@@ -11,7 +13,7 @@ export class EventService {
   constructor(private http: HttpClient) {
   }
 
-  saveEvent(event: Event): Observable<Event> {
+  saveEvent(event: SaveEventPayload): Observable<Event> {
     const url = `${this.apiUrl}/event`;
     return this.http.post<Event>(url, event);
   }

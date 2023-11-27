@@ -5,6 +5,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { EventFormComponent } from "@planner/components/calendar/event-form/event-form.component";
+import { EventService, SaveEventPayload } from "@planner/services/event.service";
 
 @Component({
   selector: 'app-event-dialog',
@@ -15,10 +16,16 @@ import { EventFormComponent } from "@planner/components/calendar/event-form/even
 })
 export class EventDialogComponent {
 
-  constructor(private dialogRef: MatDialogRef<EventDialogComponent>) {
+  constructor(private dialogRef: MatDialogRef<EventDialogComponent>, private eventService: EventService) {
   }
 
-  cancel():void {
+  cancel(): void {
     this.dialogRef.close();
+  }
+
+  submit(value: SaveEventPayload): void {
+    this.eventService.saveEvent(value).subscribe((event) => {
+      // TODO Patch Grid -> insert new event into the cache
+    });
   }
 }
