@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Add Event</h1>
 <div class="event-dialog__form" mat-dialog-content>
-  <app-event-form #ref/>
+  <app-event-form [date]="data.date" #ref/>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="accent" (click)="cancel()">Cancel</button>

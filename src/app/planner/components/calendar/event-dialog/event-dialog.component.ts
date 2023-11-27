@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle } from "@angular/material/dialog";
+import {
+  MAT_DIALOG_DATA,
+  MatDialogActions,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle
+} from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { EventFormComponent } from "@planner/components/calendar/event-form/event-form.component";
 import { EventService, SaveEventPayload } from "@planner/services/event.service";
+
+export interface EventDialogData {
+  date: Date;
+}
 
 @Component({
   selector: 'app-event-dialog',
@@ -16,7 +26,10 @@ import { EventService, SaveEventPayload } from "@planner/services/event.service"
 })
 export class EventDialogComponent {
 
-  constructor(private dialogRef: MatDialogRef<EventDialogComponent>, private eventService: EventService) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: EventDialogData,
+    private dialogRef: MatDialogRef<EventDialogComponent>,
+    private eventService: EventService) {
   }
 
   cancel(): void {
