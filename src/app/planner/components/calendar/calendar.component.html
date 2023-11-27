@@ -1,12 +1,14 @@
 <div class="calendar">
   <app-calendar-toolbar/>
   <div class="calendar__header">
-    <mat-card *ngFor="let dayOfWeek of daysOfWeek" class="calendar__header-item">
+    @for (dayOfWeek of daysOfWeek; track dayOfWeek) {
+    <mat-card class="calendar__header-item">
       <mat-card-content>{{ dayOfWeek }}</mat-card-content>
-    </mat-card>
+      </mat-card>
+    }
   </div>
   <mat-divider class="calendar__divider"/>
-  <ng-container *ngFor="let day of grid()">
+  @for (day of grid(); track day) {
     <app-day-tile [day]="day"/>
-  </ng-container>
+  }
 </div>

@@ -6,13 +6,17 @@
       <mat-form-field>
         <mat-label>Year</mat-label>
         <mat-select [value]="calendarService.year()" (selectionChange)="calendarService.setYear($event.value)">
-          <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+          @for (year of years; track year) {
+          <mat-option [value]="year">{{ year }}</mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Month</mat-label>
         <mat-select [value]="calendarService.month()" (selectionChange)="calendarService.setMonth($event.value)">
-          <mat-option *ngFor="let month of months" [value]="month.value">{{ month.label }}</mat-option>
+          @for (month of months; track month) {
+          <mat-option [value]="month.value">{{ month.label }}</mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <button mat-mini-fab [disabled]="calendarService.isPrevButtonDisabled()"  (click)="calendarService.goToPreviousMonth()">

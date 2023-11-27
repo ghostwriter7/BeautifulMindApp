@@ -4,6 +4,9 @@
     <mat-form-field>
       <mat-label>Title</mat-label>
       <input formControlName="title" matInput>
+      @if (form.controls.title.invalid) {
+      <mat-error>Title is required</mat-error>
+      }
     </mat-form-field>
   </div>
   <div class="event-form__field">
