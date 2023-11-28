@@ -1,5 +1,5 @@
 import { HomeComponent } from './home.component';
-import { Spectator, createComponentFactory } from "@ngneat/spectator/jest";
+import { createComponentFactory, Spectator } from "@ngneat/spectator/jest";
 import { MenuItemComponent } from "@home/components/menu-item/menu-item.component";
 import { RouterTestingModule } from "@angular/router/testing";
 
@@ -11,8 +11,8 @@ describe('HomeComponent', () => {
     imports: [RouterTestingModule]
   });
 
-  beforeEach( () => {
-   spectator = createComponent();
+  beforeEach(() => {
+    spectator = createComponent();
   });
 
   it('should create', () => {

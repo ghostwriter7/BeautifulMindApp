@@ -12,7 +12,7 @@ describe('MenuItemComponent', () => {
   beforeEach(() => {
     spectator = createComponent({
       props: {
-        menuItem: { icon: 'ANY_ICON', label: 'ANY_LABEL', route: 'ANY_ROUTE'}
+        menuItem: { icon: 'ANY_ICON', label: 'ANY_LABEL', route: 'ANY_ROUTE' }
       }
     });
   });

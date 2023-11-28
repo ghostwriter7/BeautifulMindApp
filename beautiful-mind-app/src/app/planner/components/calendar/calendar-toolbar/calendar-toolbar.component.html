@@ -19,10 +19,12 @@
           }
         </mat-select>
       </mat-form-field>
-      <button mat-mini-fab [disabled]="calendarService.isPrevButtonDisabled()"  (click)="calendarService.goToPreviousMonth()">
+      <button mat-mini-fab [disabled]="calendarService.isPrevButtonDisabled()"
+              (click)="calendarService.goToPreviousMonth()">
         <mat-icon>arrow_left</mat-icon>
       </button>
-      <button mat-mini-fab [disabled]="calendarService.isNextButtonDisabled()" (click)="calendarService.goToNextMonth()">
+      <button mat-mini-fab [disabled]="calendarService.isNextButtonDisabled()"
+              (click)="calendarService.goToNextMonth()">
         <mat-icon>arrow_right</mat-icon>
       </button>
     </div>
