@@ -1,0 +1,67 @@
+{
+  "name": "beautiful-mind-api",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "beautiful-mind-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/beautiful-mind-api",
+        "main": "beautiful-mind-api/src/main.ts",
+        "tsConfig": "beautiful-mind-api/tsconfig.app.json",
+        "assets": [
+          "beautiful-mind-api/src/assets"
+        ],
+        "isolatedConfig": true,
+        "webpackConfig": "beautiful-mind-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "beautiful-mind-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "beautiful-mind-api:build:development"
+        },
+        "production": {
+          "buildTarget": "beautiful-mind-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "beautiful-mind-api/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "beautiful-mind-api/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
