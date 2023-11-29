@@ -16,6 +16,9 @@
     "paths": {
       "@event/*": [
         "./src/event/*"
+      ],
+      "@user/*": [
+        "./src/user/*"
       ]
     }
   }

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpException, Param, Patch, Post } from "@nestjs/common";
 import { EventService } from "@event/event.service";
 import { CreateEventDto, UpdateEventDto } from "@event/data-transfer-objects";
 
@@ -25,6 +25,12 @@ import { CreateEventDto, UpdateEventDto } from "@event/data-transfer-objects";
 export class EventController {
 
   constructor(private eventService: EventService) {
+  }
+
+  @Get("exception")
+  getException(): void {
+    // any thrown HttpException will be automatically handled by Nest.js and returned to the client
+    throw new HttpException("My message", 500);
   }
 
   @Get(":id")
