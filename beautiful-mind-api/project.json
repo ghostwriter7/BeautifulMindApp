@@ -31,7 +31,8 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "beautiful-mind-api:build"
+        "buildTarget": "beautiful-mind-api:build",
+        "port": 9229
       },
       "configurations": {
         "development": {
