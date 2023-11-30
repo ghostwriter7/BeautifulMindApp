@@ -15,6 +15,6 @@ export class User {
   @Column()
   isActive: boolean;
 
-  @OneToMany(type => Event, event => event.userId)
+  @OneToMany((type) => Event, (event) => event.user, { eager: false, onDelete: 'CASCADE' })
   events: Event[];
 }
