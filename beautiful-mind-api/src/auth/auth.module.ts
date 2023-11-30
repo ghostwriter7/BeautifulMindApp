@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
+import { AuthController } from '@auth/auth.controller';
+import { AuthService } from '@auth/auth.service';
 import { UserModule } from "@user/user.module";
 import { JwtModule } from "@nestjs/jwt";
-import { JWT_SECRET } from "./constants";
+import { JWT_SECRET } from "@auth/constants";
+import { APP_GUARD } from "@nestjs/core";
+import { AuthGuard } from "@auth/auth.guard";
 
 @Module({
   imports: [
@@ -14,7 +16,8 @@ import { JWT_SECRET } from "./constants";
     }),
     UserModule],
   controllers: [AuthController],
-  providers: [AuthService]
+  providers: [AuthService,
+    { provide: APP_GUARD, useClass: AuthGuard }]
 })
 export class AuthModule {
 }
