@@ -21,7 +21,7 @@ export class UserService {
   constructor(@InjectRepository(User) private userRepository: Repository<User>) {
   }
 
-  findOne(username: string): { userId: number, username: string, password: string } | undefined {
+  async findOne(username: string): Promise<{ userId: number, username: string, password: string } | undefined> {
     return this.tempListOfUsers.find((user) => user.username === username);
   }
 
