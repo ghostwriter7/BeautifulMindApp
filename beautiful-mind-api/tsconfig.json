@@ -14,12 +14,9 @@
     "baseUrl": "./",
     "esModuleInterop": true,
     "paths": {
-      "@event/*": [
-        "./src/event/*"
-      ],
-      "@user/*": [
-        "./src/user/*"
-      ]
+      "@auth/*": ["./src/auth/*"],
+      "@event/*": ["./src/event/*"],
+      "@user/*": ["./src/user/*"]
     }
   }
 }

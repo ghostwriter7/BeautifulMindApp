@@ -6,9 +6,12 @@ import { EventModule } from "@event/event.module";
 import { LoggerMiddleware } from "./logger.middleware";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserModule } from "@user/user.module";
+import { AuthModule } from "../auth/auth.module";
 
 @Module({
-  imports: [EventModule,
+  imports: [
+    AuthModule,
+    EventModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
