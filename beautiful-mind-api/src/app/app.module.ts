@@ -6,6 +6,8 @@ import { EventModule } from "@event/event.module";
 import { LoggerMiddleware } from "./logger.middleware";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserModule } from "@user/user.module";
+import { User } from "@user/user.entity";
+import { Event } from "@event/event.entity";
 
 @Module({
   imports: [EventModule,
@@ -16,7 +18,7 @@ import { UserModule } from "@user/user.module";
       username: 'beautifulmind_user',
       password: 'password',
       database: 'beautifulmind',
-      entities: [],
+      entities: [User, Event],
       synchronize: true,
     }), UserModule],
   controllers: [AppController],
