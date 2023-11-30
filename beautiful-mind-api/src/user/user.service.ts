@@ -5,8 +5,24 @@ import { Repository } from "typeorm";
 
 @Injectable()
 export class UserService {
+  private readonly tempListOfUsers = [
+    {
+      userId: 1,
+      username: "Kubo",
+      password: "ABC"
+    },
+    {
+      userId: 2,
+      username: "John",
+      password: "123"
+    }
+  ];
 
   constructor(@InjectRepository(User) private userRepository: Repository<User>) {
+  }
+
+  findOne(username: string): { userId: number, username: string, password: string } | undefined {
+    return this.tempListOfUsers.find((user) => user.username === username);
   }
 
   findById(id: number): Promise<User | null> {
