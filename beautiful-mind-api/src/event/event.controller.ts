@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpException, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
 import { EventService } from "@event/event.service";
 import { CreateEventDto, UpdateEventDto } from "@event/data-transfer-objects";
 
@@ -24,33 +24,27 @@ import { CreateEventDto, UpdateEventDto } from "@event/data-transfer-objects";
 @Controller("event")
 export class EventController {
 
-  constructor(private eventService: EventService) {
-  }
+    constructor(private eventService: EventService) {
+    }
 
-  @Get("exception")
-  getException(): void {
-    // any thrown HttpException will be automatically handled by Nest.js and returned to the client
-    throw new HttpException("My message", 500);
-  }
+    @Get(":id")
+    // @HttpCode(200) specify custom HttpCode
+    getEventById(@Param("id", ParseIntPipe) id: number): any {
+        return "hello";
+    }
 
-  @Get(":id")
-  // @HttpCode(200) specify custom HttpCode
-  getEventById(/*@Res() response -> access Response object */ @Param("id") id: number): any {
-    return "hello";
-  }
+    @Post()
+    createEvent(@Body() createEventDto: CreateEventDto): any {
 
-  @Post()
-  createEvent(@Body() createEventDto: CreateEventDto): any {
+    }
 
-  }
+    @Delete(":id")
+    deleteEvent(@Param("id", ParseIntPipe) id: number): any {
 
-  @Delete(":id")
-  deleteEvent(@Param("id") id: number): any {
+    }
 
-  }
+    @Patch(":id")
+    patchEvent(@Param("id", ParseIntPipe) id: number, @Body() body: UpdateEventDto): any {
 
-  @Patch(":id")
-  patchEvent(@Param("id") id: number, @Body() body: UpdateEventDto): any {
-
-  }
+    }
 }

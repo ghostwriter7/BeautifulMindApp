@@ -3,6 +3,7 @@ import { AccessToken, AuthService } from "@auth/auth.service";
 import { Public } from "@auth/public.decorator";
 import { User } from "@user/user.entity";
 import { Request } from "express";
+import { SignInDto } from "@auth/dto";
 
 @Controller('auth')
 export class AuthController {
@@ -13,7 +14,7 @@ export class AuthController {
     @Public()
     @HttpCode(HttpStatus.OK)
     @Post("signin")
-    signIn(@Body() signInDto: Record<'email' | 'password', string>): AccessToken {
+    signIn(@Body() signInDto: SignInDto): AccessToken {
         return this.authService.signIn(signInDto.email, signInDto.password);
     }
 
