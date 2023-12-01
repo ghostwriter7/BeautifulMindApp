@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req } from '@nestjs/common';
 import { AccessToken, AuthService } from "@auth/auth.service";
-import { Public } from "@auth/public.decorator";
+import { Public } from "@auth/decorators";
 import { User } from "@user/user.entity";
 import { Request } from "express";
 import { AuthDto } from "@auth/dto";
