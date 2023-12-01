@@ -3,18 +3,22 @@ import { Event } from "@event/event.entity";
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
 
-  @Column()
-  name: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column()
-  email: string;
+    @Column({ nullable: true })
+    name: string;
 
-  @Column()
-  isActive: boolean;
+    @Column()
+    email: string;
 
-  @OneToMany((type) => Event, (event) => event.user, { eager: false, onDelete: 'CASCADE' })
-  events: Event[];
+    @Column({ default: true })
+    isActive: boolean;
+
+    @Column()
+    hash: string;
+
+    @OneToMany((type) => Event, (event) => event.user, { eager: false, onDelete: 'CASCADE' })
+    events: Event[];
 }

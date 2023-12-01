@@ -1,39 +1,41 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "@user/user.entity";
 import { Repository } from "typeorm";
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
-  private readonly tempListOfUsers = [
-    {
-      userId: 1,
-      username: "Kubo",
-      password: "ABC"
-    },
-    {
-      userId: 2,
-      username: "John",
-      password: "123"
+
+    constructor(@InjectRepository(User) private userRepository: Repository<User>) {
     }
-  ];
 
-  constructor(@InjectRepository(User) private userRepository: Repository<User>) {
-  }
+    findById(id: number): Promise<User | null> {
+        return this.userRepository.findOneBy({ id });
+    }
 
-  async findOne(username: string): Promise<{ userId: number, username: string, password: string } | undefined> {
-    return this.tempListOfUsers.find((user) => user.username === username);
-  }
+    findByEmail(email: string): Promise<User | null> {
+        return this.userRepository.findOneBy({ email });
+    }
 
-  findById(id: number): Promise<User | null> {
-    return this.userRepository.findOneBy({ id });
-  }
+    findAll(): Promise<User[]> {
+        return this.userRepository.find();
+    }
 
-  findAll(): Promise<User[]> {
-    return this.userRepository.find();
-  }
+    async remove(id: number): Promise<void> {
+        await this.userRepository.delete(id);
+    }
 
-  async remove(id: number): Promise<void> {
-    await this.userRepository.delete(id);
-  }
+    async create(email: string, password: string): Promise<User> {
+        const existingUser = await this.userRepository.findOneBy({ email });
+
+        if (existingUser) {
+            throw new UnauthorizedException();
+        }
+
+        const hash = await bcrypt.hash(password, 10);
+        const user = this.userRepository.create({ email, hash });
+
+        return await this.userRepository.save(user);
+    }
 }
