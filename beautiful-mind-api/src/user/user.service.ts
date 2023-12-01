@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { Injectable, Logger, UnauthorizedException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "@user/user.entity";
 import { Repository } from "typeorm";
@@ -6,6 +6,8 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
+
+    private readonly logger = new Logger(UserService.name);
 
     constructor(@InjectRepository(User) private userRepository: Repository<User>) {
     }
@@ -30,6 +32,7 @@ export class UserService {
         const existingUser = await this.userRepository.findOneBy({ email });
 
         if (existingUser) {
+            this.logger.log(`Failed to create a user. User with email: ${email} already exists!`);
             throw new UnauthorizedException();
         }
 
