@@ -5,25 +5,25 @@ import { Role } from "@user/entities";
 @Entity()
 export class User {
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({ nullable: true })
-    name: string;
+  @Column({ nullable: true })
+  name: string;
 
-    @Column()
-    email: string;
+  @Column({ unique: true })
+  email: string;
 
-    @Column({ default: true })
-    isActive: boolean;
+  @Column({ default: true })
+  isActive: boolean;
 
-    @Column()
-    hash: string;
+  @Column()
+  hash: string;
 
-    @ManyToMany((type) => Role, (role) => role.users)
-    @JoinTable({ name: 'role_user' })
-    roles: Role[];
+  @ManyToMany((type) => Role, (role) => role.users, { eager: true })
+  @JoinTable({ name: 'role_user' })
+  roles: Role[];
 
-    @OneToMany((type) => Event, (event) => event.user, { eager: false, onDelete: 'CASCADE' })
-    events: Event[];
+  @OneToMany((type) => Event, (event) => event.user, { eager: false, onDelete: 'CASCADE' })
+  events: Event[];
 }
