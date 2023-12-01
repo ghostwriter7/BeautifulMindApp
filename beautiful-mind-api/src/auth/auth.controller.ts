@@ -10,10 +10,11 @@ export class AuthController {
     constructor(private authService: AuthService) {
     }
 
+    @Public()
     @HttpCode(HttpStatus.OK)
-    @Post("login")
-    signIn(@Body() signInDto: Record<'username' | 'password', string>): AccessToken {
-        return this.authService.signIn(signInDto.username, signInDto.password);
+    @Post("signin")
+    signIn(@Body() signInDto: Record<'email' | 'password', string>): AccessToken {
+        return this.authService.signIn(signInDto.email, signInDto.password);
     }
 
     @Public()
