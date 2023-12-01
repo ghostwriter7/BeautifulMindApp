@@ -1,29 +1,29 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "@user/user.entity";
+import { User } from "@user/entities";
 
 @Entity()
 export class Event {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column()
-  title: string;
+    @Column()
+    title: string;
 
-  @Column()
-  description: string;
+    @Column()
+    description: string;
 
-  @Column()
-  startDateTime: Date;
+    @Column()
+    startDateTime: Date;
 
-  @Column()
-  endDateTime: Date;
+    @Column()
+    endDateTime: Date;
 
-  @Column()
-  location: string;
+    @Column()
+    location: string;
 
-  @Column()
-  userId: number;
+    @Column()
+    userId: number;
 
-  @ManyToOne((type) => User, (user) => user.events)
-  user: User;
+    @ManyToOne((type) => User, (user) => user.events)
+    user: User;
 }

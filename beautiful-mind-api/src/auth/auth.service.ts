@@ -1,7 +1,7 @@
 import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { UserService } from "@user/user.service";
 import { JwtService } from "@nestjs/jwt";
-import { User } from "@user/user.entity";
+import { User } from "@user/entities";
 import * as bcrypt from 'bcrypt';
 
 export type AccessToken = Promise<{ accessToken: string }>;

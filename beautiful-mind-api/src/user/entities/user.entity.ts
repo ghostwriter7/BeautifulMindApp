@@ -1,6 +1,6 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Event } from "@event/event.entity";
-import { Role } from "@auth/enums";
+import { Role } from "@user/entities";
 
 @Entity()
 export class User {
@@ -20,7 +20,8 @@ export class User {
     @Column()
     hash: string;
 
-    @Column()
+    @ManyToMany((type) => Role, (role) => role.users)
+    @JoinTable({ name: 'role_user' })
     roles: Role[];
 
     @OneToMany((type) => Event, (event) => event.user, { eager: false, onDelete: 'CASCADE' })
