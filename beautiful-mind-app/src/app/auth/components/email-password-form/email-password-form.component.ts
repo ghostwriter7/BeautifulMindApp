@@ -10,6 +10,11 @@ type SignUpForm = FormGroup<{
   password: FormControl<string>;
 }>
 
+enum FormMode {
+  SignIn,
+  SignUp
+}
+
 @Component({
   selector: 'app-email-password-form',
   standalone: true,
@@ -23,17 +28,17 @@ export class EmailPasswordFormComponent {
     password: new FormControl(null)
   });
   infoMessage = computed(() =>
-    this.mode() === 'SIGN_UP' ? `Don't you have an account?` : 'Do you already have an account?'
+    this.mode() === FormMode.SignUp ? `Don't you have an account?` : 'Do you already have an account?'
   );
-  mode = signal<'SIGN_UP' | 'SIGN_IN'>('SIGN_UP')
+  mode = signal<FormMode>(FormMode.SignUp)
   submitButtonLabel = computed(() =>
-    this.mode() === 'SIGN_UP' ? 'Sign Up' : 'Sign In');
+    this.mode() === FormMode.SignUp ? 'Sign Up' : 'Sign In');
   toggleModeButtonLabel = computed(() =>
-    this.mode() === 'SIGN_UP' ? 'Sign up with email' : 'Sign in with email'
+    this.mode() === FormMode.SignUp ? 'Sign up with email' : 'Sign in with email'
   );
-
+  
   changeMode(): void {
-    this.mode.update((mode) => mode === 'SIGN_UP' ? 'SIGN_IN' : 'SIGN_UP');
+    this.mode.update((mode) => mode === FormMode.SignUp ? FormMode.SignIn : FormMode.SignUp);
   }
 
   onSubmit() {
