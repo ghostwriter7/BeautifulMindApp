@@ -1,5 +1,4 @@
 export class CreateEventDto {
-  id: number;
   dateId: Date;
   title: string;
   description: string;

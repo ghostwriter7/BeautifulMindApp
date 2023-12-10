@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
 import { EventService } from "@event/event.service";
 import { CreateEventDto, UpdateEventDto } from "@event/data-transfer-objects";
+import { Event } from "@event/event.entity";
 
 // @Request(), @Req()	req
 // @Response(), @Res()*	res
@@ -24,27 +25,26 @@ import { CreateEventDto, UpdateEventDto } from "@event/data-transfer-objects";
 @Controller("event")
 export class EventController {
 
-    constructor(private eventService: EventService) {
-    }
+  constructor(private eventService: EventService) {
+  }
 
-    @Get(":id")
-    // @HttpCode(200) specify custom HttpCode
-    getEventById(@Param("id", ParseIntPipe) id: number): any {
-        return "hello";
-    }
+  @Get(":id")
+  getEventById(@Param("id", ParseIntPipe) id: number): any {
+    return "hello";
+  }
 
-    @Post()
-    createEvent(@Body() createEventDto: CreateEventDto): any {
+  @Post()
+  createEvent(@Body() createEventDto: CreateEventDto): Promise<Event> {
+    return this.eventService.create(createEventDto);
+  }
 
-    }
+  @Delete(":id")
+  deleteEvent(@Param("id", ParseIntPipe) id: number): any {
 
-    @Delete(":id")
-    deleteEvent(@Param("id", ParseIntPipe) id: number): any {
+  }
 
-    }
+  @Patch(":id")
+  patchEvent(@Param("id", ParseIntPipe) id: number, @Body() body: UpdateEventDto): any {
 
-    @Patch(":id")
-    patchEvent(@Param("id", ParseIntPipe) id: number, @Body() body: UpdateEventDto): any {
-
-    }
+  }
 }
