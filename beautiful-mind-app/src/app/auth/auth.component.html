@@ -4,11 +4,12 @@
       <mat-card-subtitle class="auth__icon">
         <mat-icon>account_box</mat-icon>
       </mat-card-subtitle>
-      <mat-card-title><span class="auth__title">Sign In</span></mat-card-title>
+      <mat-card-title><span class="auth__title">{{ label() }}</span></mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <app-email-password-form/>
-
+      <app-email-password-form>
+        <app-auth-mode-selector/>
+      </app-email-password-form>
     </mat-card-content>
   </mat-card>
 </div>

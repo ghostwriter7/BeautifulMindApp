@@ -1,22 +1,18 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AuthService } from "@auth/services";
+import { AuthService, AuthUiService } from "@auth/services";
 import { UserService } from "@auth/services/user.service";
 import { Router } from "@angular/router";
+import { FormMode } from "@auth/enums";
 
 type SignUpForm = FormGroup<{
   email: FormControl<string>;
   password: FormControl<string>;
 }>
-
-enum FormMode {
-  SignIn = 'SIGN_IN',
-  SignUp = 'SIGN_UP'
-}
 
 @Component({
   selector: 'app-email-password-form',
@@ -30,23 +26,13 @@ export class EmailPasswordFormComponent {
     email: new FormControl(null),
     password: new FormControl(null)
   });
-  infoMessage = computed(() =>
-    this.mode() === FormMode.SignUp ? 'Do you already have an account?' : `Don't you have an account?`
-  );
-  mode = signal<FormMode>(FormMode.SignUp)
-  submitButtonLabel = computed(() =>
-    this.mode() === FormMode.SignUp ? 'Sign Up' : 'Sign In');
-  toggleModeButtonLabel = computed(() =>
-    this.mode() === FormMode.SignUp ? 'Sign in with email' : 'Sign up with email'
-  );
+  submitButtonLabel = this.authUiService.getLabelAsSignal();
+
 
   constructor(private authService: AuthService,
+              private authUiService: AuthUiService,
               private router: Router,
               private userService: UserService) {
-  }
-
-  changeMode(): void {
-    this.mode.update((mode) => mode === FormMode.SignUp ? FormMode.SignIn : FormMode.SignUp);
   }
 
   onSubmit() {
@@ -56,7 +42,7 @@ export class EmailPasswordFormComponent {
 
     const { email, password } = this.form.value;
 
-    const request$ = this.mode() === FormMode.SignUp ?
+    const request$ = this.authUiService.getCurrentMode() === FormMode.SignUp ?
       this.authService.signUp(email, password) :
       this.authService.signIn(email, password);
 
